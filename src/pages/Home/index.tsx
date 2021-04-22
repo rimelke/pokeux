@@ -53,8 +53,9 @@ const Home = () => {
 	})
 
 	useEffect(() => {
-		setPokemons(data.pokemons.results
-			.filter((pokemon: any) => pokemon.name.includes(search)))
+		if (data)
+			setPokemons(data.pokemons.results
+				.filter((pokemon: any) => pokemon.name.includes(search)))
 	}, [data, search])
 
 	useEffect(() => {
