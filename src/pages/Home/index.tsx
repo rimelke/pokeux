@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { gql, useQuery } from '@apollo/client'
 import apollo from "../../services/apollo"
 import withHeader from "../../hooks/withHeader"
 import useDisclosure from "../../hooks/useDisclosure"
 import PokemonView from "../../components/PokemonView"
 import PokemonList from "../../components/PokemonList"
+import Select from 'react-select'
+import { Main, Pagination, Toolbar } from "./styles"
 
 const GET_POKEMONS = gql`
   query pokemons($limit: Int, $offset: Int) {
@@ -23,19 +25,45 @@ const GET_POKEMONS = gql`
   }
 `
 
+const LimitOptions = [
+	{value: 25, label: '25'},
+	{value: 50, label: '50'},
+	{value: 75, label: '75'},
+	{value: 100, label: '100'},
+	{value: 150, label: '150'},
+	{value: 200, label: '200'},
+]
+
 
 const Home = () => {
-	const [limit, setLimit] = useState(50)
+	const [limit, setLimit] = useState(100)
 	const [offset, setOffset] = useState(0)
+	const [page, setPage] = useState(0)
+	const [search, setSearch] = useState('')
+	const [pokemons, setPokemons] = useState([])
+
 	const { isOpen, onClose, onOpen} = useDisclosure()
 	const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null)
 	const { loading, error, data } = useQuery(GET_POKEMONS, {
 		variables: {
-			limit,
-			offset
+			limit: 1200,
+			offset: 0
 		},
 		client: apollo
 	})
+
+	useEffect(() => {
+		setPokemons(data.pokemons.results
+			.filter((pokemon: any) => pokemon.name.includes(search)))
+	}, [data, search])
+
+	useEffect(() => {
+		setOffset(page * limit)
+	}, [page, limit])
+
+	useEffect(() => {
+		setPage(0)
+	}, [search, limit])
 
 	if (loading)
 		return <p>Loading...</p>
@@ -44,20 +72,27 @@ const Home = () => {
 		return <p>{error.message}</p>
 
 	return (
-		<main>
+		<Main>
 			<PokemonView isOpen={isOpen} name={selectedPokemon} onClose={onClose} />
-			<div>
-				<select value={limit} onChange={e => setLimit(Number(e.target.value))}>
-					<option value={25}>25</option>
-					<option value={50}>50</option>
-					<option value={75}>75</option>
-					<option value={100}>100</option>
-					<option value={150}>150</option>
-					<option value={200}>200</option>
-				</select>
-			</div>
-			<PokemonList onOpenView={onOpen} setSelected={setSelectedPokemon} data={data.pokemons.results} />
-		</main>
+			<Toolbar>
+				<input type="text" placeholder="Digite para pesquisar" onChange={e => setSearch(e.target.value)} />
+				<Select
+					className="fon"
+					options={LimitOptions}
+					value={LimitOptions.find(opt => opt.value === limit)}
+					onChange={(opt: any) => setLimit(Number(opt.value))} />
+
+				<Pagination>
+					{Array(Math.ceil(pokemons.length / limit)).fill('_').map((_, i) => (
+						<li className={page === i ? 'active' : ''} onClick={() => setPage(i)} key={i}>{i + 1}</li>
+					))}
+				</Pagination>
+			</Toolbar>
+			<PokemonList
+				onOpenView={onOpen}
+				setSelected={setSelectedPokemon}
+				data={pokemons.slice(offset, offset + limit)} />
+		</Main>
 	)
 }
 

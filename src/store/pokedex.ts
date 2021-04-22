@@ -14,6 +14,11 @@ interface State {
   count: number;
 }
 
+function removePokemon(state: State, action: any) {
+  const data = state.data.filter((pokemon) => pokemon.name !== action.name);
+  return { ...state, data, count: data.length };
+}
+
 function pokedex(state: State = INITIAL_STATE, action: any) {
   switch (action.type) {
     case "ADD_POKEMON":
@@ -24,6 +29,8 @@ function pokedex(state: State = INITIAL_STATE, action: any) {
             data: [...state.data, action.pokemon],
             count: state.count + 1,
           };
+    case "REMOVE_POKEMON":
+      return removePokemon(state, action);
     default:
       return state;
   }

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: rgb(58, 138, 232);
+  background: ${(props) => props.theme.colors.primary};
   background: linear-gradient(
     180deg,
-    rgba(58, 138, 232) 0%,
-    rgba(106, 205, 244) 100%
+    ${(props) => props.theme.colors.primary} 0%,
+    ${(props) => props.theme.colors.secondary} 100%
   );
   border-radius: 1rem;
   width: 40rem;

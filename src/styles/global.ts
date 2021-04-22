@@ -12,12 +12,6 @@ export default createGlobalStyle`
         padding: 1rem;
     }
 
-    main > div {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-
     .overlay {
         background: rgba(119, 119, 119, 0.75);
         position: fixed;

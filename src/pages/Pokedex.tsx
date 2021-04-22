@@ -6,7 +6,7 @@ import useDisclosure from "../hooks/useDisclosure"
 import withHeader from "../hooks/withHeader"
 
 const Pokedex = () => {
-    const pokemons = useSelector((state: any) => state.data)
+    const pokemons = useSelector((state: any) => state.pokedex.data)
     const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null)
     const {isOpen, onClose, onOpen} = useDisclosure()
 

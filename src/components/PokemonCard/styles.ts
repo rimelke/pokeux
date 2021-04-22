@@ -1,14 +1,19 @@
 import styled from "styled-components";
+import { shade } from "polished";
 
 export const Container = styled.li`
-  background: rgb(58, 138, 232);
+  background: ${(props) => props.theme.colors.primary};
   background: linear-gradient(
     0deg,
-    rgba(58, 138, 232) 0%,
-    rgba(106, 205, 244) 100%
+    ${(props) => props.theme.colors.primary} 0%,
+    ${(props) => props.theme.colors.secondary} 100%
   );
   border-radius: 1rem;
   padding: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
   img {
     cursor: pointer;
@@ -34,5 +39,27 @@ export const Container = styled.li`
     padding: 0.1rem 0.6rem;
     font-weight: medium;
     margin-top: -0.5rem;
+  }
+
+  svg {
+    position: absolute;
+    cursor: pointer;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: 0.2s;
+  }
+
+  svg.full {
+    color: #f00;
+  }
+
+  svg.empty {
+    color: #666;
+  }
+
+  svg:hover {
+    color: ${(props) => shade(0.2, "#f00")};
   }
 `;

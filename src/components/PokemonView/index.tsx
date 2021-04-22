@@ -79,7 +79,7 @@ const GET_POKEMON = gql`
 Modal.setAppElement('#root')
 
 const PokemonView: React.FC<Props> = ({ isOpen, onClose, name }) => {
-    const pokemons = useSelector((state: any) => state.data)
+    const pokemons = useSelector((state: any) => state.pokedex.data)
 	const { data: pokemon } = useQuery<PokemonData>(GET_POKEMON, {
 		variables: { name },
 		client: apollo

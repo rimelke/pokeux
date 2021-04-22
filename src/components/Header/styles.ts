@@ -35,7 +35,7 @@ export const PokedexLogo = styled.div`
     display: block;
   }
   div {
-    background: #53bcf0;
+    background: ${(props) => props.theme.colors.third};
     border-radius: 100%;
     padding: 0.3rem;
 
