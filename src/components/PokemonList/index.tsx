@@ -13,7 +13,7 @@ const PokemonList: React.FC<Props> = ({ data, onOpenView, setSelected }) => {
     return (
         <Container>
             {data.map((pokemon: Pokemon) => (
-                <PokemonCard pokemon={pokemon} onImageClick={() => {
+                <PokemonCard key={pokemon.name} pokemon={pokemon} onImageClick={() => {
                     setSelected(pokemon.name)
                     onOpenView()
                 }}  />

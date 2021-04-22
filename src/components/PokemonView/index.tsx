@@ -3,8 +3,6 @@ import { gql, useQuery } from '@apollo/client'
 import React from 'react';
 import { useSelector } from 'react-redux';
 import apollo from '../../services/apollo';
-import { FiPlus, FiCheck, FiMinus } from 'react-icons/fi'
-import { Pokemon } from '../../store/pokedex'
 import { Container, Info, Basics, Stats, Type } from './styles'
 
 interface PokemonData {
