@@ -3,19 +3,25 @@ const INITIAL_STATE = {
   count: 0,
 };
 
+export interface Pokemon {
+  id: number;
+  name: string;
+  image: string;
+}
+
 interface State {
-  data: string[];
+  data: Pokemon[];
   count: number;
 }
 
 function pokedex(state: State = INITIAL_STATE, action: any) {
   switch (action.type) {
     case "ADD_POKEMON":
-      return state.data.includes(action.name)
+      return state.data.map((pokemon) => pokemon.id).includes(action.pokemon.id)
         ? state
         : {
             ...state,
-            data: [...state.data, action.name],
+            data: [...state.data, action.pokemon],
             count: state.count + 1,
           };
     default:

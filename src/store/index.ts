@@ -1,7 +1,17 @@
 import { createStore } from "redux";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import pokedex from "./pokedex";
 
-const store = createStore(pokedex);
+const persistConfig = {
+  key: "pokeux",
+  storage,
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, pokedex);
+
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+
+export { store, persistor };
