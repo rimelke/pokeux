@@ -1,46 +1,83 @@
-# Getting Started with Create React App
+# **:iphone: Pokeux**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple Pokedex in your browser to see all pokemons. [Access the demo.][demo]
 
-## Available Scripts
+## :bulb: Objective
 
-In the project directory, you can run:
+This application intends to be a pokedex in your browser where you can find pokemons, see their specs and add them to your pokedex. Also, you can style the whole app with your favorite pokemon type
 
-### `yarn start`
+## :heavy_check_mark: Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### :computer: Web
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Search of pokemons
 
-### `yarn test`
+- Favorite list (Pokedex)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Pokemon card with specifications
 
-### `yarn build`
+- Theme switcher based on pokemon types
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## :art: Layout
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h1 align="center">
+    <img alt="Layout" title="#Layout" src="./assets/layout.png" />
+</h1>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **:wrench: Technologies**
 
-### `yarn eject`
+### :computer: Website
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React
+- Redux
+- Styled-Components
+- Typescript
+- GraphQL
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## :books: How to use
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+:computer: **Website**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
 
-## Learn More
+# Start the website
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+$ npm start
+
+or
+
+$ yarn start
+
+
+
+# The app will be running on port 3000
+
+```
+
+## :open_book: How to contribute
+
+1. Make a **fork**.
+
+2. Make a new branch with your changes: `git checkout -b my-feature`
+
+3. Save your changes and make a commit with a cool message: `git commit -m "feat: My new feature"`
+
+4. Send your changes: `git push origin my-feature`
+
+> If a question persists, see [how to contribute in GitHub](https://github.com/firstcontributions/first-contributions)
+
+## :memo: License
+
+This project is under the **MIT License**. See [LICENSE][license] to know more.
+
+---
+
+<h4  align="center">
+
+Made with ❤️ by <a  href="https://www.linkedin.com/in/rikelme-griep-b265a51ab"  target="_blank">Rikelme Griep</a>
+
+</h4>
+
+[license]: https://opensource.org/licenses/MIT
+[demo]: https://pokeux.vercel.app/
